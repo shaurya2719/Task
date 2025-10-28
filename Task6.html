@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Global Partners & Product Categories</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #f9fafb;
+      color: #111827;
+      line-height: 1.6;
+    }
+
+    section {
+      padding: 70px 8%;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #111827;
+    }
+
+    p.subtitle {
+      color: #6b7280;
+      max-width: 700px;
+      margin: 0 auto 50px auto;
+      font-size: 1rem;
+    }
+
+    /* ---------- TRUST CARDS ---------- */
+    .trust-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 28px;
+    }
+
+    .trust-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 20px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
+      padding: 35px 25px;
+      max-width: 340px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .trust-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    .trust-card i {
+      font-size: 50px;
+      color: #0071e3;
+      margin-bottom: 20px;
+    }
+
+    .trust-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 12px;
+    }
+
+    .trust-card p {
+      color: #6b7280;
+      font-size: 0.95rem;
+    }
+
+    /* ---------- PRODUCT CARDS ---------- */
+    .product-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 28px;
+      margin-top: 45px;
+    }
+
+    .product-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
+      width: 260px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-card i {
+      font-size: 55px;
+      color: #0071e3;
+      margin-bottom: 18px;
+    }
+
+    .product-content h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+
+    .product-content p {
+      color: #6b7280;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+    }
+
+    .product-content a {
+      text-decoration: none;
+      color: #0071e3;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .product-content a:hover {
+      color: #005bb8;
+    }
+
+    .view-all-btn {
+      margin-top: 50px;
+      background-color: #0071e3;
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .view-all-btn:hover {
+      background-color: #005bb8;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 900px) {
+      section {
+        padding: 60px 5%;
+      }
+      .trust-card, .product-card {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- WHY TRUST US SECTION -->
+  <section>
+    <h2>Why Global Partners Trust Us</h2>
+    <div class="trust-cards">
+      <div class="trust-card">
+        <i class="fas fa-industry"></i>
+        <h3>Quality-First Manufacturing</h3>
+        <p>Our state-of-the-art facilities adhere to the highest international standards, ensuring every product meets rigorous quality benchmarks before export.</p>
+      </div>
+
+      <div class="trust-card">
+        <i class="fas fa-handshake"></i>
+        <h3>End-to-End Export Support</h3>
+        <p>From regulatory documentation to specialized packaging and logistics, we handle every aspect of the export process with precision and care.</p>
+      </div>
+
+      <div class="trust-card">
+        <i class="fas fa-globe"></i>
+        <h3>500+ Products Delivered Globally</h3>
+        <p>Our extensive product portfolio serves diverse healthcare needs across continents, backed by consistent quality and timely delivery.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT CATEGORIES SECTION -->
+  <section style="background-color: #fff;">
+    <h2>Our Product Categories</h2>
+    <p class="subtitle">We offer a comprehensive range of pharmaceutical products across multiple therapeutic categories to meet diverse healthcare needs globally.</p>
+
+    <div class="product-cards">
+      <div class="product-card">
+        <i class="fas fa-capsules"></i>
+        <div class="product-content">
+          <h4>Antibiotics</h4>
+          <p>Broad spectrum and targeted antibiotics in various formulations including tablets, capsules, and injectables.</p>
+          <a href="#">View Products →</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <i class="fas fa-heartbeat"></i>
+        <div class="product-content">
+          <h4>Cardiovascular</h4>
+          <p>Comprehensive range of medications for hypertension, heart failure, and other cardiovascular conditions.</p>
+          <a href="#">View Products →</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <i class="fas fa-syringe"></i>
+        <div class="product-content">
+          <h4>Anti-Diabetic</h4>
+          <p>Oral hypoglycemics, insulins, and other diabetes management medications with proven efficacy.</p>
+          <a href="#">View Products →</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <i class="fas fa-allergies"></i>
+        <div class="product-content">
+          <h4>Dermatological</h4>
+          <p>Topical preparations, creams, ointments, and specialized formulations for various skin conditions.</p>
+          <a href="#">View Products →</a>
+        </div>
+      </div>
+    </div>
+
+    <button class="view-all-btn">View All Categories</button>
+  </section>
+</body>
+</html>

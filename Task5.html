@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Company Overview</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Remix Icon CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #f9fafb;
+      color: #111827;
+      line-height: 1.6;
+      padding: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      width: 100%;
+      background-color: transparent;
+      gap: 60px;
+    }
+
+    .text-section {
+      flex: 1;
+    }
+
+    .text-section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #111827;
+    }
+
+    .text-section p {
+      color: #4b5563;
+      margin-bottom: 24px;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-basis: calc(50% - 15px);
+    }
+
+    .icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .blue {
+      background-color: #e0f0ff;
+      color: #0071e3;
+    }
+
+    .green {
+      background-color: #dcfce7;
+      color: #16a34a;
+    }
+
+    .feature h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .feature p {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin: 0;
+    }
+
+    .button {
+      background-color: #22c55e;
+      color: white;
+      padding: 10px 22px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      margin-top: 30px;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #16a34a;
+    }
+
+    .image-section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 420px;
+      transition: none; /* Removed hover transitions */
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 20px;
+      transition: none; /* No zoom or animation */
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .features {
+        justify-content: center;
+      }
+
+      .feature {
+        flex-basis: 100%;
+      }
+
+      .image-section {
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="text-section">
+      <h2>Our Company Overview</h2>
+      <p>
+        Karshipla Healthcare LLP is a government-recognized export house delivering high-quality pharmaceutical
+        and nutraceutical products globally. With over 40 years of experience, we specialize in trusted,
+        WHO-GMP-certified manufacturing and exports.
+      </p>
+      <p>
+        Serving 30+ countries across Africa, Asia, and the Middle East, we provide 500+ formulations with reliable
+        logistics, regulatory support, and proven expertise. Our mission is to make global healthcare more accessible
+        and affordable.
+      </p>
+
+      <div class="features">
+        <div class="feature">
+          <div class="icon blue"><i class="ri-hospital-line"></i></div>
+          <div>
+            <h3>WHO-GMP Certified</h3>
+            <p>Highest quality standards</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="icon green"><i class="ri-flask-line"></i></div>
+          <div>
+            <h3>500+ Products</h3>
+            <p>Comprehensive portfolio</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="icon blue"><i class="ri-earth-line"></i></div>
+          <div>
+            <h3>Global Presence</h3>
+            <p>Serving 30+ countries</p>
+          </div>
+        </div>
+      </div>
+
+      <button class="button">Explore Our Journey →</button>
+    </div>
+
+    <div class="image-section">
+      <div class="card">
+        <img src="lab.jpg.png" alt="Lab Image" />
+      </div>
+    </div>
+  </div>
+</body>
+</html>
