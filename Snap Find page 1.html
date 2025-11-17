@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SnapFind • Freelance Recruitment Portal</title>
+
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #7b61ff;
+      --accent: #ff71b2;
+      --bg-soft: #fff8ff;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --card-radius: 18px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.16);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(180deg,#fff7ff 0,#f6f3ff 40%,#ffffff 100%);
+      color: var(--text-main);
+      line-height: 1.4;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ------------ NAVBAR ------------ */
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #f1e7ff;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 14px 0;
+    }
+
+    .nav-left img { height: 34px; }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      position: relative;
+    }
+
+    .nav-links a.active::after,
+    .nav-links a:hover::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg,var(--accent),var(--primary));
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .btn {
+      padding: 8px 20px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: transparent;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn-outline {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: #ffffff;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg,var(--primary),var(--accent));
+      color: #ffffff;
+      border: none;
+      box-shadow: 0 10px 25px rgba(123,97,255,0.4);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(15,23,42,0.15);
+    }
+
+    /* ------------ HERO -------------- */
+    .hero-bg {
+      background: url("images/stats-banner.png") center/cover no-repeat;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0,1.05fr) minmax(0,0.95fr);
+      gap: 40px;
+      padding: 42px 0 80px;
+      align-items: center;
+    }
+
+    .badge {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 14px;
+      border-radius:999px;
+      border:1px solid #f1d7ff;
+      background:rgba(255,255,255,0.9);
+      font-size:11px;
+      font-weight:500;
+      color:var(--primary);
+      margin-bottom:14px;
+      backdrop-filter:blur(4px);
+    }
+
+    .badge-dot {
+      width:7px;height:7px;border-radius:50%;background:var(--accent);
+    }
+
+    .hero h1 {
+      font-size: clamp(26px,3vw,34px);
+      line-height:1.25;
+      margin-bottom:8px;
+    }
+
+    .hero h1 span { color:var(--primary); }
+
+    .hero-sub {
+      font-size:13px;
+      max-width:440px;
+      color:var(--text-muted);
+      margin-bottom:26px;
+    }
+
+    .hero-metrics {
+      display:flex;
+      flex-wrap:wrap;
+      gap:22px;
+    }
+
+    .metric {
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .metric-icon {
+      width:36px;height:36px;border-radius:50%;
+      background:linear-gradient(135deg,#ffe3f1,#f0e5ff);
+      display:flex;align-items:center;justify-content:center;
+      font-size:18px;
+    }
+
+    .metric span { display:block;font-size:12px;font-weight:600; }
+    .metric small{ display:block;font-size:11px;color:var(--text-muted); }
+
+    .hero-right {
+      position:relative;
+      display:flex;
+      justify-content:flex-end;
+    }
+
+    .hero-card-main {
+      width:260px;
+      border-radius:var(--card-radius);
+      overflow:hidden;
+      box-shadow:var(--shadow-soft);
+      z-index:2;
+    }
+
+    .hero-card-secondary {
+      position:absolute;
+      top:0;
+      right:180px;
+      width:160px;
+      border-radius:var(--card-radius);
+      overflow:hidden;
+      box-shadow:var(--shadow-soft);
+      transform:translateY(-18px);
+    }
+
+    .hero-card-main img,
+    .hero-card-secondary img { width:100%;height:100%;object-fit:cover; }
+
+    /* floating signup strip */
+    .hero-strip {
+      display:flex;
+      justify-content:center;
+      margin-top:-34px;
+      position:relative;
+      z-index:5;
+    }
+
+    .hero-form {
+      background:#ffffff;
+      border-radius:999px;
+      box-shadow:0 18px 44px rgba(15,23,42,0.2);
+      padding:10px 12px 10px 20px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      width:min(780px,100%);
+    }
+
+    .hero-form input {
+      flex:1;
+      min-width:0;
+      border:none;
+      outline:none;
+      font-size:13px;
+    }
+
+    .hero-form input::placeholder { color:#9ca3af; }
+
+    /* ------------ SECTIONS BASE ---------- */
+    section { padding:64px 0; }
+
+    .section-heading {
+      text-align:center;
+      margin-bottom:16px;
+    }
+
+    .section-title {
+      font-size:24px;
+      font-weight:700;
+    }
+    .section-title span { color:var(--primary); }
+
+    .section-sub {
+      font-size:13px;
+      color:var(--text-muted);
+      max-width:580px;
+      margin:6px auto 0;
+    }
+
+    /* ------------ LEADERBOARD ------------ */
+    .leaderboard-wrap {
+      display:flex;
+      justify-content:center;
+      margin-top:20px;
+    }
+
+    .leaderboard-card {
+      width:min(640px,100%);
+      background:#ffffff;
+      border-radius:var(--card-radius);
+      box-shadow:var(--shadow-soft);
+      padding:18px 22px;
+      font-size:12px;
+    }
+
+    .leaderboard-top {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:12px;
+    }
+
+    .live {
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:4px 10px;
+      border-radius:999px;
+      background:#ffe7ea;
+      color:#f97373;
+      font-size:10px;
+      font-weight:600;
+    }
+
+    .live-dot {
+      width:7px;height:7px;border-radius:50%;background:#f97373;
+    }
+
+    table { width:100%;border-collapse:collapse; }
+    th,td { padding:7px 6px;text-align:left; }
+    th { font-weight:600;color:#9ca3af;border-bottom:1px solid #f2f2f2; }
+    tr+tr td { border-top:1px solid #f7f7f7; }
+
+    .rank {
+      width:22px;height:22px;border-radius:999px;
+      border:1px solid #e5e7eb;
+      display:flex;align-items:center;justify-content:center;
+      font-size:11px;font-weight:600;
+    }
+
+    /* ------------ CONNECT SECTION -------- */
+    .connect-grid {
+      display:grid;
+      grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);
+      gap:40px;
+      align-items:center;
+      margin-top:24px;
+    }
+
+    .connect-text {
+      font-size:13px;
+      color:var(--text-muted);
+    }
+
+    .connect-text p + p { margin-top:12px; }
+
+    .office-collage {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+    }
+
+    .office-collage img {
+      border-radius:16px;
+      object-fit:cover;
+      height:120px;
+    }
+
+    .office-collage img:first-child {
+      grid-column:1 / -1;
+      height:150px;
+    }
+
+    /* ------------ STEPS ------------------ */
+    .steps-wrap {
+      margin-top:26px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .steps-wrap img { width:min(760px,100%); }
+
+    /* ------------ FEATURED JOBS ---------- */
+    .jobs-grid {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:22px;
+      margin-top:28px;
+    }
+
+    .job-card {
+      background:#ffffff;
+      border-radius:var(--card-radius);
+      box-shadow:var(--shadow-soft);
+      padding:18px 18px 14px;
+      font-size:12px;
+      display:flex;
+      flex-direction:column;
+      gap:7px;
+    }
+
+    .job-badge {
+      display:inline-block;
+      font-size:10px;
+      padding:3px 8px;
+      border-radius:999px;
+      background:#ecfdf3;
+      color:#15803d;
+      font-weight:600;
+    }
+    .job-part { background:#eef6ff;color:#2563eb; }
+
+    .job-title { font-size:14px;font-weight:600; }
+
+    .job-meta {
+      display:flex;
+      justify-content:space-between;
+      color:var(--text-muted);
+    }
+
+    .job-brand {
+      display:flex;
+      align-items:center;
+      gap:8px;
+      margin-top:8px;
+    }
+
+    .job-logo {
+      width:26px;height:26px;border-radius:8px;
+      background:#eef2ff;
+      display:flex;align-items:center;justify-content:center;
+      font-size:13px;font-weight:700;
+    }
+
+    .job-footer {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:10px;
+      gap:10px;
+    }
+
+    .job-footer small{font-size:11px;color:var(--text-muted);}
+
+    .btn-mini {
+      padding:6px 12px;
+      font-size:11px;
+    }
+
+    .view-all {
+      text-align:center;
+      font-size:13px;
+      color:var(--primary);
+      margin-top:20px;
+      cursor:pointer;
+    }
+
+    .view-all::after {
+      content:"";
+      display:block;
+      width:42px;
+      height:2px;
+      border-radius:999px;
+      background:var(--primary);
+      margin:2px auto 0;
+    }
+
+    /* ------------ CTA BANNER ------------ */
+    .cta {
+      margin-top:28px;
+      background:#020617;
+      color:#ffffff;
+      border-radius:24px;
+      padding:30px 30px 18px;
+      display:grid;
+      grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);
+      gap:26px;
+      align-items:center;
+    }
+
+    .cta h2 {
+      font-size:22px;
+      margin-bottom:6px;
+    }
+
+    .cta h2 span { color:#60a5fa; }
+    .cta p {
+      font-size:13px;
+      color:#d1d5db;
+      max-width:420px;
+      margin-bottom:16px;
+    }
+
+    .cta img {
+      border-radius:18px;
+      height:190px;
+      object-fit:cover;
+      box-shadow:var(--shadow-soft);
+    }
+
+    /* ------------ COMMUNITY ------------- */
+    .community-strip {
+      margin-top:26px;
+      display:flex;
+      gap:18px;
+      overflow-x:auto;
+      padding-bottom:4px;
+    }
+
+    .community-card {
+      min-width:180px;
+      height:200px;
+      border-radius:18px;
+      background:#111827;
+      position:relative;
+      overflow:hidden;
+      color:#f9fafb;
+      display:flex;
+      align-items:flex-end;
+      padding:12px;
+    }
+
+    .community-card::before {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,0.8),transparent 55%);
+      z-index:1;
+    }
+
+    .community-card img {
+      position:absolute;
+      inset:0;
+      width:100%;height:100%;
+      object-fit:cover;
+      z-index:0;
+    }
+
+    .community-content {
+      position:relative;
+      z-index:2;
+      font-size:11px;
+    }
+
+    .play {
+      width:30px;height:30px;
+      border-radius:999px;
+      border:2px solid #22c55e;
+      display:flex;align-items:center;justify-content:center;
+      font-size:11px;
+      margin-bottom:8px;
+    }
+
+    /* ------------ LOGOS & MAP ----------- */
+    .logos-row {
+      margin-top:26px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:24px 40px;
+      justify-content:center;
+      font-size:22px;
+      font-weight:700;
+    }
+
+    .logos-row span:nth-child(odd) { color:#2563eb; }
+    .logos-row span:nth-child(even){ color:#f97316; }
+
+    .logos-caption {
+      margin-top:6px;
+      text-align:center;
+      font-size:12px;
+      color:var(--text-muted);
+    }
+
+    .map-wrap {
+      margin-top:26px;
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .map-wrap img {
+      width:100%;
+      height:260px;
+      object-fit:cover;
+    }
+
+    /* ------------ FOOTER ---------------- */
+    footer {
+      margin-top:64px;
+      background:radial-gradient(circle at top,#f8f5ff 0,#faf5ff 35%,#ffffff 100%);
+      border-top:1px solid #f1e7ff;
+      padding:40px 0 22px;
+      font-size:12px;
+      color:var(--text-muted);
+    }
+
+    .footer-top {
+      display:grid;
+      grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));
+      gap:32px;
+      margin-bottom:24px;
+    }
+
+    .footer-brand img { height:32px;margin-bottom:8px; }
+
+    .footer-brand p { max-width:260px; }
+
+    .footer-col h4 {
+      font-size:13px;
+      font-weight:600;
+      margin-bottom:8px;
+      color:#4b5563;
+    }
+
+    .footer-col ul { list-style:none;display:flex;flex-direction:column;gap:5px; }
+
+    .footer-bottom {
+      border-top:1px solid #e5defa;
+      padding-top:10px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      font-size:11px;
+    }
+
+    .footer-social {
+      display:flex;
+      gap:10px;
+      font-size:13px;
+    }
+
+    /* ------------ RESPONSIVE ------------ */
+    @media (max-width: 992px) {
+      .nav { flex-wrap:wrap; }
+      .nav-links {
+        order:3;
+        width:100%;
+        justify-content:center;
+        flex-wrap:wrap;
+        margin-top:4px;
+      }
+
+      .hero {
+        grid-template-columns:minmax(0,1fr);
+        padding-top:32px;
+      }
+
+      .hero-right { justify-content:flex-start; }
+
+      .hero-card-secondary {
+        top:auto;bottom:-26px;right:80px;
+      }
+
+      .connect-grid {
+        grid-template-columns:minmax(0,1fr);
+      }
+
+      .cta {
+        grid-template-columns:minmax(0,1fr);
+      }
+
+      .footer-top {
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container { padding:0 16px; }
+      section { padding:48px 0; }
+
+      .hero-form {
+        border-radius:18px;
+        flex-wrap:wrap;
+        padding:12px;
+      }
+
+      .hero-form input {
+        flex:100%;
+        padding:6px 10px;
+        border-radius:999px;
+        background:#f3f4ff;
+      }
+
+      .hero-form .btn-primary {
+        width:100%;
+        text-align:center;
+      }
+
+      .jobs-grid {
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+
+      .cta {
+        padding:22px 18px;
+      }
+
+      .footer-top {
+        grid-template-columns:minmax(0,1fr);
+      }
+
+      .footer-bottom {
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .jobs-grid { grid-template-columns:minmax(0,1fr); }
+      .hero-strip { margin-top:-22px; }
+    }
+    /* HERO BACKGROUND WITH OVERLAY */
+.hero-bg {
+  background: url("images/stats-banner.png") center/cover no-repeat;
+  position: relative;              /* new */
+}
+
+.hero-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* darken behind the text, but keep the right side a bit lighter */
+  background: linear-gradient(to right,
+              rgba(0, 0, 0, 0.75),
+              rgba(0, 0, 0, 0.45),
+              rgba(0, 0, 0, 0.15));
+  z-index: 0;
+}
+
+.hero {
+  position: relative;              /* make hero above overlay */
+  z-index: 1;
+}
+
+/* HERO TEXT COLORS */
+.hero h1 {
+  color: #ffffff;                  /* was dark */
+}
+
+.hero-sub {
+  color: #e5e7eb;                  /* light grey */
+}
+
+/* metrics text */
+.metric span {
+  color: #f9fafb;
+}
+
+.metric small {
+  color: #e5e7eb;
+}
+
+/* badge */
+.badge {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+}
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <div class="nav-left">
+          <img src="images/logo-snapfind.png" alt="SnapFind logo">
+        </div>
+        <div class="nav-links">
+          <a href="#" class="active">Home</a>
+          <a href="#">About us</a>
+          <a href="#">Contact us</a>
+          <a href="#">Career</a>
+          <a href="#">Jobs</a>
+        </div>
+        <div class="nav-actions">
+          <button class="btn btn-outline">Contact Us</button>
+          <button class="btn btn-primary">Login</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero-bg">
+    <div class="container">
+      <section class="hero">
+        <div class="hero-left">
+          <div class="badge">
+            <span class="badge-dot"></span>
+            Freelance Recruitment Earnings
+          </div>
+          <h1>
+            Boost Your Freelance<br>
+            Recruitment Career!
+          </h1>
+          <p class="hero-sub">
+            Join our engaging community of referrers and candidates for jobs &amp; unlock
+            extra income on every eligible hire in tech and beyond.
+          </p>
+
+          <div class="hero-metrics">
+            <div class="metric">
+              <div class="metric-icon">👥</div>
+              <div>
+                <span>25k+ Referrers</span>
+                <small>Growing every month</small>
+              </div>
+            </div>
+            <div class="metric">
+              <div class="metric-icon">🏢</div>
+              <div>
+                <span>900+ Employers</span>
+                <small>Hiring across India</small>
+              </div>
+            </div>
+            <div class="metric">
+              <div class="metric-icon">💸</div>
+              <div>
+                <span>₹6Cr+ Earnings</span>
+                <small>Paid to referrers</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="hero-card-main">
+            <img src="images/hero-group.png" alt="People working together">
+          </div>
+          <div class="hero-card-secondary">
+            <img src="images/company-office-3.png" alt="Office team">
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- floating form -->
+  <div class="hero-strip">
+    <form class="hero-form">
+      <input type="text" placeholder="Name">
+      <input type="email" placeholder="Email">
+      <input type="tel" placeholder="Mobile number">
+      <button class="btn btn-primary" type="submit">Sign up</button>
+    </form>
+  </div>
+
+  <main>
+    <!-- LEADERBOARD -->
+    <section>
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-title">Leader<span>board</span></div>
+          <p class="section-sub">
+            Meet our highest earning referrers and get inspired to start your own
+            referral journey with SnapFind.
+          </p>
+        </div>
+
+        <div class="leaderboard-wrap">
+          <div class="leaderboard-card">
+            <div class="leaderboard-top">
+              <div class="live"><span class="live-dot"></span> Live</div>
+              <small>Updated every 24 hours</small>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Referrer</th>
+                  <th>Total Earning</th>
+                  <th>Last 30 days</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><div class="rank">1</div></td>
+                  <td>Gaurav Kumar S.</td>
+                  <td>₹3,20,734</td>
+                  <td>₹87,200</td>
+                </tr>
+                <tr>
+                  <td><div class="rank">2</div></td>
+                  <td>Riya T.</td>
+                  <td>₹2,58,910</td>
+                  <td>₹61,450</td>
+                </tr>
+                <tr>
+                  <td><div class="rank">3</div></td>
+                  <td>Shivam P.</td>
+                  <td>₹2,01,380</td>
+                  <td>₹44,980</td>
+                </tr>
+                <tr>
+                  <td><div class="rank">4</div></td>
+                  <td>Neha R.</td>
+                  <td>₹1,74,600</td>
+                  <td>₹36,420</td>
+                </tr>
+                <tr>
+                  <td><div class="rank">5</div></td>
+                  <td>Ankit J.</td>
+                  <td>₹1,40,250</td>
+                  <td>₹29,600</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONNECT -->
+    <section>
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-title">
+            Connect with Thousands of<br>
+            Professional <span>Freelancers</span>
+          </div>
+          <p class="section-sub">
+            At SnapFind, we bring together thousands of freelancers, offering them the
+            chance to earn money by referring candidates. Use your network, refer great
+            talent, and get rewarded.
+          </p>
+        </div>
+
+        <div class="connect-grid">
+          <div class="connect-text">
+            <p>
+              Discover curated openings from trusted employers and share them within
+              your community. Track every referral with transparent status updates.
+            </p>
+            <p>
+              Our platform makes it easy to stay organised, manage multiple referrals,
+              and build a strong side-income stream while helping others grow.
+            </p>
+          </div>
+          <div class="office-collage">
+            <img src="images/company-office-1.png" alt="Office 1">
+            <img src="images/company-office-2.png" alt="Office 2">
+            <img src="images/company-office-3.png" alt="Office 3">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEPS -->
+    <section>
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-title">Just 3 Easy <span>Steps</span></div>
+          <p class="section-sub">
+            Sign up, share job openings with your network, and earn on every eligible
+            successful hire.
+          </p>
+        </div>
+
+        <div class="steps-wrap">
+          <img src="images/steps-01-02-03.png" alt="Three steps graphic">
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED JOBS -->
+    <section>
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-title">Featured <span>Jobs</span></div>
+          <p class="section-sub">
+            Choose jobs from top employers &amp; share them with your network. More
+            referrals means more earnings for you.
+          </p>
+        </div>
+
+        <div class="jobs-grid">
+          <article class="job-card">
+            <span class="job-badge job-part">PART-TIME</span>
+            <div class="job-title">Technical Support Specialist</div>
+            <div class="job-meta">
+              <span>Google Inc.</span>
+              <span>₹28,000 / mo</span>
+            </div>
+            <div class="job-meta">
+              <span>New Delhi, India</span>
+              <span>Remote</span>
+            </div>
+            <div class="job-brand">
+              <div class="job-logo">G</div>
+              <div>
+                <small>10+ openings</small><br>
+                <small>Bonus for quick joins</small>
+              </div>
+            </div>
+            <div class="job-footer">
+              <small>Posted 2 days ago</small>
+              <div>
+                <button class="btn btn-outline btn-mini">View details</button>
+                <button class="btn btn-primary btn-mini">Apply now</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="job-card">
+            <span class="job-badge">FULL-TIME</span>
+            <div class="job-title">Senior UI/UX Designer</div>
+            <div class="job-meta">
+              <span>Apple</span>
+              <span>₹1,20,000 / mo</span>
+            </div>
+            <div class="job-meta">
+              <span>Bengaluru, India</span>
+              <span>On-site</span>
+            </div>
+            <div class="job-brand">
+              <div class="job-logo"></div>
+              <div>
+                <small>5+ openings</small><br>
+                <small>Portfolio required</small>
+              </div>
+            </div>
+            <div class="job-footer">
+              <small>Posted 1 week ago</small>
+              <div>
+                <button class="btn btn-outline btn-mini">View details</button>
+                <button class="btn btn-primary btn-mini">Apply now</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="job-card">
+            <span class="job-badge job-part">PART-TIME</span>
+            <div class="job-title">Marketing Officer</div>
+            <div class="job-meta">
+              <span>Intel Corp</span>
+              <span>₹45,000 / mo</span>
+            </div>
+            <div class="job-meta">
+              <span>Pune, India</span>
+              <span>Hybrid</span>
+            </div>
+            <div class="job-brand">
+              <div class="job-logo">in</div>
+              <div>
+                <small>20+ openings</small><br>
+                <small>Referral bonus up to 20%</small>
+              </div>
+            </div>
+            <div class="job-footer">
+              <small>Posted 3 days ago</small>
+              <div>
+                <button class="btn btn-outline btn-mini">View details</button>
+                <button class="btn btn-primary btn-mini">Apply now</button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="view-all">view all</div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section>
+      <div class="container">
+        <div class="cta">
+          <div>
+            <p style="font-size:13px;color:#9ca3af;margin-bottom:4px;">Hello Freelancers!</p>
+            <h2>Create A Better <span>Future</span> For Yourself</h2>
+            <p>
+              Turn your network into an additional income stream. Refer quality candidates,
+              help them secure better roles, and earn attractive rewards for every successful hire.
+            </p>
+            <button class="btn btn-primary">Apply now</button>
+          </div>
+          <div>
+            <img src="images/freelancers-group.png" alt="Freelancers group">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMMUNITY / LOGOS / MAP -->
+    <section>
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-title">Meet Our Freelance <span>Community</span></div>
+        </div>
+
+        <div class="community-strip">
+          <div class="community-card">
+            <img src="images/hero-group.png" alt="">
+            <div class="community-content">
+              <div class="play">▶</div>
+              <div>Good Life Begins With A Good Company</div>
+            </div>
+          </div>
+          <div class="community-card">
+            <img src="images/company-office-1.png" alt="">
+            <div class="community-content">
+              <div class="play">▶</div>
+              <div>Real stories from our top referrers.</div>
+            </div>
+          </div>
+          <div class="community-card">
+            <img src="images/company-office-2.png" alt="">
+            <div class="community-content">
+              <div class="play">▶</div>
+              <div>How referrals changed their careers.</div>
+            </div>
+          </div>
+          <div class="community-card">
+            <img src="images/company-office-3.png" alt="">
+            <div class="community-content">
+              <div class="play">▶</div>
+              <div>Join a growing community today.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="logos-row">
+          <span>Google</span>
+          <span>Microsoft</span>
+          <span>Flipkart</span>
+          <span>YouTube</span>
+          <span>IBM</span>
+        </div>
+        <p class="logos-caption">Top companies hiring now on SnapFind</p>
+
+        <div class="map-wrap">
+          <img src="images/map.png" alt="Map">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="images/logo-snapfind.png" alt="SnapFind logo">
+          <p>Call now: <strong>+91 9581776078</strong></p>
+          <p>44/1 Chandi Chowk Street, Near Metro Gate, Business Hub, New Delhi, India</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Link</h4>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Admin</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Candidate</h4>
+          <ul>
+            <li><a href="#">Browse Jobs</a></li>
+            <li><a href="#">Browse Employers</a></li>
+            <li><a href="#">Candidate Dashboard</a></li>
+            <li><a href="#">Saved Jobs</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Employers</h4>
+          <ul>
+            <li><a href="#">Post a Job</a></li>
+            <li><a href="#">Browse Candidates</a></li>
+            <li><a href="#">Employer Dashboard</a></li>
+            <li><a href="#">Applications</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2024 SnapFind Job Portal. All rights reserved.</span>
+        <div class="footer-social">
+          <span>Facebook</span>
+          <span>Instagram</span>
+          <span>LinkedIn</span>
+          <span>Twitter</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
